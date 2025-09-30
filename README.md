@@ -1,81 +1,107 @@
+# Deceptive Opinion Spam Detection (SpamSleuth + LLMs)
 
-# Deceptive Opinion Spam (SpamSleuth)
+Our project aims to detect and combat **fake or misleading online reviews**. By leveraging **Machine Learning (ML), Deep Learning (DL), and Large Language Models (LLMs)**, it analyzes language patterns, sentiments, and reviewer behavior to differentiate between genuine and deceptive content.  
 
-Our project aims to detect and combat fake or misleading online reviews and comments. Leveraging algorithms of machine learning and Deep Learning, it analyzes language patterns, sentiments, and reviewer behavior to differentiate between genuine and deceptive content. By filtering out deceptive spam, the project enhances consumer trust and ensures more informed decision-making in online marketplaces and review platforms.
+Filtering out deceptive reviews enhances **consumer trust** and ensures more **informed decision-making** in online marketplaces and review platforms.  
 
+---
 
+## 🚀 Scope
+1. Develop algorithms for detecting deceptive online reviews.  
+2. Analyze linguistic and behavioral features for spam identification.  
+3. Ensure scalability for processing large volumes of data.  
+4. Integrate detection tools into online platforms for practical use.  
 
+---
 
-## Scope
-1)Develop algorithms for detecting deceptive online reviews.
+## 📂 Datasets
 
-2)Analyze linguistic and behavioral features for spam identification.
+We used both **benchmark** and **custom datasets**:
 
-3)Ensure scalability for processing large volumes of data.
+- **AMT Dataset (Gold Standard)**  
+  - 400 truthful positive reviews from TripAdvisor  
+  - 400 deceptive positive reviews from Mechanical Turk  
+  - 400 truthful negative reviews from Expedia, Hotels.com, Orbitz, Priceline, TripAdvisor, Yelp  
+  - 400 deceptive negative reviews from Mechanical Turk  
+  - (20 reviews each for 20 Chicago hotels)  
+  - [Kaggle Dataset Link](https://www.kaggle.com/datasets/rtatman/deceptive-opinion-spam-corpus)  
 
-4)Integrate detection tools into online platforms for practical use.
+- **Files Used**  
+  - `fake_review_old.csv` → Preprocessed file  
+  - `deceptive-opinion.csv` → Raw file  
+  - `fake_review.csv` → Custom-generated dataset  
+  - `fake_review_dataset_GPT4o.xlsx` → Dataset generated using GPT-4o  
 
+---
 
-## Pre-requsites
-1)Pandas: A Python library used for data manipulation and analysis, providing data structures and functions to work with structured data efficiently.
+## 🛠️ Tech Stack
 
-2)NumPy: A fundamental package for scientific computing with Python, providing support for large, multi-dimensional arrays and matrices, along with a collection of mathematical functions.
+**Machine Learning**  
+- Data Analysis  
+- TF-IDF, CountVectorizer  
+- scikit-learn models (Logistic Regression, SVM, RandomForest, etc.)  
+- pickle  
 
-3)scikit-learn (sklearn): A machine learning library in Python that provides simple and efficient tools for data mining and data analysis. It includes various algorithms for classification, regression, clustering, and dimensionality reduction.
+**Deep Learning**  
+- NLP (spaCy, preprocessing, embeddings)  
+- GloVe embeddings  
+- LSTM, BiLSTM, CNN  
+- Attention mechanisms  
 
-4)Machine Learning: A field of artificial intelligence that enables systems to learn from data and make predictions or decisions without being explicitly programmed. It encompasses various algorithms and techniques for tasks such as classification, regression, clustering, and reinforcement learning.
+**Large Language Models (LLMs)**  
+- BERT-based classifiers  
+- LLaMA-based detection models  
+- GPT-assisted dataset generation  
 
-5)Deep Learning: A subset of machine learning that focuses on algorithms inspired by the structure and function of the brain's neural networks. Deep learning models, typically implemented with neural networks, are capable of learning representations from large amounts of data for tasks such as image and speech recognition.
+---
 
-6)spaCy: An open-source natural language processing (NLP) library. It provides tools and functionalities for tasks such as tokenization, part-of-speech tagging, named entity recognition, and dependency parsing.
+## 📂 Code Organization
 
-7)GloVe (Global Vectors for Word Representation): GloVe is trained on aggregated global word-word co-occurrence statistics, providing meaningful representations that capture semantic relationships between words.
-## Datasets
+### 🔹 Machine Learning
+- [basicmlmodelsdecepopspam_newdataset.py](https://github.com/SIDEYS/DeceptiveReviewsLLMs/blob/main/basicmlmodelsdecepopspam_newdataset.py)  
+- [basicmlmodelsdecepopspam_olddataset.py](https://github.com/SIDEYS/DeceptiveReviewsLLMs/blob/main/basicmlmodelsdecepopspam_olddataset.py)  
 
-We used a gold standard dataset which is widely used in the field of deceptive opinion spam.
+### 🔹 Deep Learning
+- [conv1d_bilstm_attention_15_newdataset.py](https://github.com/SIDEYS/DeceptiveReviewsLLMs/blob/main/conv1d_bilstm_attention_15_newdataset.py)  
+- [conv1d_lstm_15_epochs_old_dataset.py](https://github.com/SIDEYS/DeceptiveReviewsLLMs/blob/main/conv1d_lstm_15_epochs_old_dataset.py)  
+- Variations with different epochs, datasets, and models are similarly named.  
 
-This corpus contains:
+### 🔹 Large Language Models
+- [old_fake_reviews+detection_using_bert.py](https://github.com/SIDEYS/DeceptiveReviewsLLMs/blob/main/old_fake_reviews%2Bdetection_using_bert.py)  
+- [fake_reviews+detection_using_bert_newdata.py](https://github.com/SIDEYS/DeceptiveReviewsLLMs/blob/main/fake_reviews%2Bdetection_using_bert_newdata.py)  
+- [deceptiveopspam_gpt__amtdataset.py](https://github.com/SIDEYS/DeceptiveReviewsLLMs/blob/main/deceptiveopspam_gpt__amtdataset.py)  
+- [fake_reviews_detection_using_llama.py](https://github.com/SIDEYS/DeceptiveReviewsLLMs/blob/main/fake_reviews_detection_using_llama.py)  
 
-1) 400 truthful positive reviews from TripAdvisor
-2) 400 deceptive positive reviews from Mechanical Turk 
-3) 400 truthful negative reviews from Expedia, Hotels.com, Orbitz, Priceline, TripAdvisor and Yelp 
-4) 400 deceptive negative reviews from Mechanical Turk.
- Each of the above datasets consist of 20 reviews for each of the 20 most Chichago hotels.
+---
 
-link for the dataset:
-https://www.kaggle.com/datasets/rtatman/deceptive-opinion-spam-corpus
+## ⚙️ Prerequisites
 
-or download form the repositry.
-## Tech Stack
+- **Python Libraries**  
+  - Pandas → data manipulation  
+  - NumPy → numerical computing  
+  - scikit-learn → ML models  
+  - spaCy → NLP preprocessing  
+  - TensorFlow / PyTorch → DL models  
 
-**Machine Learning:** Data analysis, TfidfVectorizer, CountVectorizer, ML Models, pickle.
+- **Embeddings**  
+  - GloVe (Global Vectors for Word Representation)  
 
-**Deep Learning:** Nlp, Spacy, Text Processing, Glove, LSTM's, CNN, Attention models, Exploratory Data Analysis.
+---
 
+## ▶️ Run Locally
 
+Open notebooks in **Google Colab** or local environment:  
 
+1. Upload dataset files (`fake_review.csv`, `fake_review_old.csv`, etc.)  
+2. Upload GloVe vector files  
+3. Copy the dataset/vector file paths and update code accordingly  
+4. Run cells sequentially (or use **F9** to run all)  
 
-## Run Locally
+---
 
-Clone the project
+## 📧 Contact
+For queries, reach out at: **sbhangale@umass.edu**  
 
-```bash
-  git clone https://github.com/SIDEYS/SpamSleuth.git
-```
+---
 
-open the notebooks in google collab
-
-```bash
-  Upload Dataset in collab
-```
-```bash
-  Upload glove vector files 
-```
-```bash
-  copy the path of the files and paste the link where the files is to be loaded 
-```
-
-```bash
-  rull all using f9 key or run a single cell
-```
-
+👉 Repo Link: [SpamSleuth](https://github.com/SIDEYS/SpamSleuth)  
