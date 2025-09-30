@@ -1,4 +1,4 @@
-# Deceptive Opinion Spam Detection (SpamSleuth + LLMs)
+# Deceptive Opinion Spam Detection (SpamSleuth)
 
 Our project aims to detect and combat **fake or misleading online reviews**. By leveraging **Machine Learning (ML), Deep Learning (DL), and Large Language Models (LLMs)**, it analyzes language patterns, sentiments, and reviewer behavior to differentiate between genuine and deceptive content.  
 
